@@ -1,0 +1,30 @@
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init 
+machine:
+  node:
+    version: 0.10.32
+  python:
+    version: 2.7.3
+  services:
+    - docker
+dependencies:
+  pre:
+    - pip install awscli
+    - cp .dockercfg ../.dockercfg
+  override:
+    - docker info
+    - cd peer; docker build -t thedpd/peer .
+    - cd test; docker build -t thedpd/testting .
+test:
+  override:
+    - docker run -d -p 3005:44444 thedpd/peer; sleep 10
+    - docker run -d -p 3005:44445 thedpd/testting; sleep 10
+    - curl --retry 10 --retry-delay 5 -v http://localhost:44444
+    - curl --retry 10 --retry-delay 5 -v http://localhost:44445
+#deployment:
+#  hub:
+#    branch: master
+#    commands:
+#      - /bin/bash -x deploy.sh $CIRCLE_SHA1
