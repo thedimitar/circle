@@ -12,7 +12,6 @@ machine:
 dependencies:
   pre:
     - pip install awscli
-    - cp .dockercfg ../.dockercfg
   override:
     - docker info
     - cd peer; docker build -t thedpd/peer .
