@@ -1,0 +1,6 @@
+[submodule "peer"]
+	path = peer
+	url = https://github.com/thedimitar/peer
+[submodule "testting"]
+	path = testting
+	url = https://github.com/thedimitar/testting
