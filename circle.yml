@@ -15,7 +15,7 @@ dependencies:
   override:
     - docker info
     - cd peer; docker build -t thedpd/peer .
-    - cd test; docker build -t thedpd/testting .
+    - cd testting; docker build -t thedpd/testting .
 test:
   override:
     - docker run -d -p 3005:44444 thedpd/peer; sleep 10
