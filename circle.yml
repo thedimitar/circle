@@ -18,8 +18,8 @@ dependencies:
     - cd testting; docker build -t thedpd/testting .
 test:
   override:
-    - docker run -d -p 3005:44444 thedpd/peer; sleep 10
-    - docker run -d -p 3005:44445 thedpd/testting; sleep 10
+    - docker run -d -p 44444:3005 thedpd/peer; sleep 10
+    - docker run -d -p 44445:3005 thedpd/testting; sleep 10
     - curl --retry 10 --retry-delay 5 -v http://localhost:44444
     - curl --retry 10 --retry-delay 5 -v http://localhost:44445
 #deployment:
