@@ -14,8 +14,8 @@ dependencies:
     - pip install awscli
   override:
     - docker info
-    - cd peer; docker build -t thedpd/peer .
-    - cd testting; docker build -t thedpd/testting .
+    - cd peer; git checkout dev; docker build -t thedpd/peer .
+    - cd testting; git checkout dev; docker build -t thedpd/testting .
 test:
   override:
     - docker run -d -p 44444:3005 thedpd/peer; sleep 10
