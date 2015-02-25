@@ -2,8 +2,6 @@ checkout:
   post:
     - git submodule sync
     - git submodule update --init
-    - cd peer; git checkout dev;
-    - cd testting; git checkout dev; 
 machine:
   node:
     version: 0.10.32
